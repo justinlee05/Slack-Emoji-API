@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 app.get('/generate', async (req, res) => {
-  const text = req.query.text || '안녕😀';
+  const text = decodeURIComponent(req.query.text || 'ERROR');
 
   const browser = await puppeteer.launch({
     headless: "new",
@@ -26,6 +26,7 @@ app.get('/generate', async (req, res) => {
   page.on('console', (msg) => console.log('[브라우저]', msg.text()));
 
   const gifDataUrl = await page.evaluate(async (text) => {
+    const text = decodeURIComponent(text || 'ERROR');
     const input = document.querySelector('#textInput')
     input.value = text;
     const button = document.querySelector('#submit')
