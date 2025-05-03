@@ -8,7 +8,7 @@ app.get('/generate', async (req, res) => {
   const text = req.query.text || '안녕😀';
 
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: "new",
     slowMo: 50,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
