@@ -26,7 +26,6 @@ app.get('/generate', async (req, res) => {
   page.on('console', (msg) => console.log('[브라우저]', msg.text()));
 
   const gifDataUrl = await page.evaluate(async (text) => {
-    const text = decodeURIComponent(text || 'ERROR');
     const input = document.querySelector('#textInput')
     input.value = text;
     const button = document.querySelector('#submit')

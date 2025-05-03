@@ -2,15 +2,19 @@ FROM node:20-slim
 
 # Puppeteer 실행에 필요한 패키지들 설치
 RUN apt-get update && apt-get install -y \
-    chromium \
+    fonts-noto-cjk \
     fonts-noto-color-emoji \
-    ca-certificates \
+    chromium \
     libglib2.0-0 \
     libnss3 \
-    libxss1 \
-    libasound2 \
-    libatk-bridge2.0-0 \
+    libx11-xcb1 \
+    libxcomposite1 \
+    libxrandr2 \
+    libxdamage1 \
     libgtk-3-0 \
+    libatk-bridge2.0-0 \
+    libasound2 \
+    ca-certificates \
     --no-install-recommends && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
